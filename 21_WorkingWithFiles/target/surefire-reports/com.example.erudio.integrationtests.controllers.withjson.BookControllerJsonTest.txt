@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.example.erudio.integrationtests.controllers.withjson.BookControllerJsonTest
--------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.230 s -- in com.example.erudio.integrationtests.controllers.withjson.BookControllerJsonTest
