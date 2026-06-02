@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9fe78491-bee3-4fcd-9c50-300ae2359715" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="9fe78491-bee3-4fcd-9c50-300ae2359715" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CompilerWorkspaceConfiguration">
-    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -21,8 +16,8 @@
         <option value="Exception" />
         <option value="Record" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -59,7 +54,7 @@
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/User/Spring/rest-with-spring-boot-and-java-erudio/14_HATEOAS",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propCompiler"
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -78,11 +73,10 @@
       <recent name="com.example.erudio.services" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.erudio.exception" />
       <recent name="com.example.erudio.data.dto" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PersonServicesTest">
+  <component name="RunManager" selected="Spring Boot.Startup">
     <configuration name="All in rest-with-spring-boot-and-java-erudio" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="rest-with-spring-boot-and-java-erudio" />
       <option name="PACKAGE_NAME" value="" />
@@ -137,8 +131,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PersonServicesTest" />
         <item itemvalue="Spring Boot.Startup" />
+        <item itemvalue="JUnit.PersonServicesTest" />
         <item itemvalue="JUnit.ObjectMapperTests" />
         <item itemvalue="JUnit.All in rest-with-spring-boot-and-java-erudio" />
       </list>
@@ -171,5 +165,10 @@
     <option featureType="dependencySupport" implementationName="executable:kubectl" />
     <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
   </component>
 </project>
