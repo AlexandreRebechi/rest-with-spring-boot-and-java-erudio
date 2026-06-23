@@ -1,0 +1,4 @@
+br\com\erudio\model\HelloDocker.class
+br\com\erudio\controller\DockerController.class
+br\com\erudio\environment\InstanceInformationService.class
+br\com\erudio\Startup.class
