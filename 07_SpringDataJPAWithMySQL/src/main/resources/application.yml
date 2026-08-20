@@ -8,7 +8,7 @@ spring:
     name: rest-with-spring-boot-and-java-erudio
   datasource:
     drive-class-name: com.mysql.cj.jdbc.Driver
-    # Se a variável USER_DB não existir no Windows, o Spring adota 'root' como padrão com segurança
+    # If the USER_DB variable does not exist in Windows, Spring falls back to 'root' as default
     url: ${URL_DB}
     username: ${USER_DB}
     password: ${PASSWORD_DB}
