@@ -7,7 +7,7 @@ spring:
     name: rest-with-spring-boot-and-java-erudio
   datasource:
     drive-class-name: com.mysql.cj.jdbc.Driver
-    # Se a variável USER_DB não existir no Windows, o Spring adota 'root' como padrão com seguranças
+    # Se a variável USER_DB não existir no Windows, o Spring adota 'root' como padrão com segurança
     url: ${URL_DB}
     username: ${USER_DB}
     password: ${PASSWORD_DB}
@@ -25,5 +25,9 @@ spring:
 
 
 # Fix-Commit-Name
+
+# Final-Name-Align
+
+# Final-Name-Align
 
 # Final-Name-Align
