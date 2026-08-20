@@ -33,3 +33,5 @@ spring:
     swagger-ui:
       use-root-path: true
 
+
+# View-Aligned
