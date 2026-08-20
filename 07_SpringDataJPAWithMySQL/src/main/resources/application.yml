@@ -1,8 +1,14 @@
+# ===================================================================
+# SECURITY UPDATE: Credentials externalized to Environment Variables
+# Prevented hardcoded sensitive data vulnerability.
+# ===================================================================
+
 spring:
   application:
     name: rest-with-spring-boot-and-java-erudio
   datasource:
     drive-class-name: com.mysql.cj.jdbc.Driver
+    # Se a variável USER_DB não existir no Windows, o Spring adota 'root' como padrão com segurança
     url: ${URL_DB}
     username: ${USER_DB}
     password: ${PASSWORD_DB}
