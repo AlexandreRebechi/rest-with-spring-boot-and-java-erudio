@@ -23,3 +23,5 @@ spring:
       root: WARN
       com.example.erudio: DEBUG
 
+
+# View-Aligned
