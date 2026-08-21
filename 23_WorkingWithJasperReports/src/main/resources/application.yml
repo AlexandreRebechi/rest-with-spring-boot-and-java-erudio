@@ -34,3 +34,4 @@ spring:
     paths-to-math: /api/**/v1/**
     swagger-ui:
       use-root-path: true
+# Refresh-View
