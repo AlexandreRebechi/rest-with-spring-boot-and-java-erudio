@@ -7,7 +7,7 @@ spring:
     name: rest-with-spring-boot-and-java-erudio
   datasource:
     drive-class-name: com.mysql.cj.jdbc.Driver
-    # If the USER_DB variable does not exist in Windows, Spring falls back to 'root' as default
+    # If the DATABASE_USER variable does not exist in Windows, Spring falls back to 'root' as default
     url: ${URL_DB}
     username: ${DATABASE_USER}
     password: ${DATABASE_PASS}
