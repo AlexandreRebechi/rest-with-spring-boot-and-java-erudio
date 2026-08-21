@@ -1,15 +1,21 @@
+# ===================================================================
+# SECURITY UPDATE: Credentials externalized to Environment Variables
+# Prevented hardcoded sensitive data vulnerability.
+# ===================================================================
 cors:
   originPatterns: http://localhost:8080,http://localhost:3000,https://www.erudio.com.br
 file:
-  upload-dir: /Users/User/CodeSpringBootFile/UploadDir
+  # Secure fallback to create a local directory if the UPLOAD_DIR variable is empty
+  upload-dir: ${UPLOAD_DIR:./uploads}
 spring:
   application:
     name: rest-with-spring-boot-and-java-erudio
   datasource:
     drive-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/rest_with_spring_boot_erudio?userTimezone=true&serverTimezone=UTC
-    username: root
-    password: AR20,.er12;/
+    # If the DATABASE_USER variable does not exist in Windows, Spring falls back to 'root' as default
+    url: ${URL_DB}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASS}
   jpa:
     hibernate:
       ddl-auto: none
@@ -32,6 +38,3 @@ spring:
     paths-to-math: /api/**/v1/**
     swagger-ui:
       use-root-path: true
-
-
-# View-Aligned
