@@ -4,7 +4,8 @@ server:
 cors:
   originPatterns: http://localhost:8080,http://localhost:3000,https://www.erudio.com.br
 file:
-  upload-dir: /Users/User/CodeSpringBootFile/UploadDir
+  # Secure fallback to create a local directory if the UPLOAD_DIR variable is empty
+  upload-dir: ${UPLOAD_DIR:./uploads}
 spring:
   application:
     name: rest-with-spring-boot-and-java-erudio
