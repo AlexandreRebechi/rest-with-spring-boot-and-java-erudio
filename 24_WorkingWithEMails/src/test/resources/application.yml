@@ -1,11 +1,13 @@
 server:
   port: 8888
-
 cors:
   originPatterns: http://localhost:8080,http://localhost:3000,https://www.erudio.com.br
 file:
   # Secure fallback to create a local directory if the UPLOAD_DIR variable is empty
   upload-dir: ${UPLOAD_DIR:./uploads}
+email:
+  subject: "Default Subject"
+  message: "Default Message"
 spring:
   application:
     name: rest-with-spring-boot-and-java-erudio
@@ -18,20 +20,28 @@ spring:
       hibernate:
     show-sql: false
     open-in-view: false
+  mail:
+    # SMTP credentials secured via system environment variables
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enabled: true
+      mail.smtp.starttls.required: true
   servlet:
     multipart:
       enabled: true
       file-size-threshold: 2KB
       max-file-size: 200MB
-      max-request-size: 215MB
-  logging:
-    level:
-      root: INFO
-      # net.sf.jasperreports.engine.*: TRACE
-      # root: WARM
-      # com.example.erudio: DEBUG
-  spring-doc:
-    paths-to-math: /api/**/v1/**
-    swagger-ui:
-      use-root-path: true
-
+      max-request-size: 215 MB
+logging:
+  level:
+    root: INFO
+    # root: WARN
+    # br.com.erudio: DEBUG
+spring-doc:
+  paths-to-match: /api/**/v1/**
+  swagger-ui:
+    use-root-path: true
