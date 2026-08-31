@@ -69,7 +69,7 @@ public class SecurityConfig {
                                 .requestMatchers(
                                "/auth/signin",
                                         "/auth/refresh/**",
-                                        "/auth/createUser", //remover depois do estudo
+                                        "/auth/createUser", // Endpoint utilizado para criação de novos usuários.
                                         "/swagger-ui/**",
                                         "/v3/api-docs/**"
                                 ).permitAll()
