@@ -26,7 +26,7 @@ jobs:
 
     - name: Build Application .jar
       working-directory: ./28_DockerizingOurApp
-      run: mvn clean package
+      run: mvn clean package -DforkCount=0
 
     - name: Docker Compose Build
       working-directory: ./28_DockerizingOurApp
@@ -35,7 +35,6 @@ jobs:
     - name: Push to Docker Hub Container Resgistry
       run: |
         docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:${{ github.run_id }} 
-        
         docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest
         docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:${{ github.run_id }}
         
