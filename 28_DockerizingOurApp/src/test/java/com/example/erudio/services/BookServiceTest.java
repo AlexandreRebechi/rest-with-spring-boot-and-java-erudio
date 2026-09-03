@@ -756,7 +756,7 @@ class BookServiceTest {
 
         assertTrue(book.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("findAll")
-                        && link.getHref().startsWith("http://localhost:8888/api/book/v1")
+                        && link.getHref().startsWith("/api/book/v1")
                         && "GET".equals(link.getType())
                 ));
 

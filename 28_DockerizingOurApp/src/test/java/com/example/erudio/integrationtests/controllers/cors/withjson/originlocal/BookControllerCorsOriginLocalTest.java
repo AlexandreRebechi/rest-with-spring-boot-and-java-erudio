@@ -836,7 +836,7 @@ class BookControllerCorsOriginLocalTest extends AbstractIntegrationTest {
     }
 
     @Test
-    @Order(20)
+    @Order(21)
     void exportPagePdf() throws JsonProcessingException{
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_LOCAL)
@@ -865,7 +865,7 @@ class BookControllerCorsOriginLocalTest extends AbstractIntegrationTest {
     }
 
     @Test
-    @Order(21)
+    @Order(22)
     void exportPagePdfWithWrongOrigin() throws JsonProcessingException{
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_SEMERU)
