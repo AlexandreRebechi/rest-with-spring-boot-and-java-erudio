@@ -62,6 +62,7 @@ class BookControllerXmlTest extends AbstractIntegrationTest {
                 .when()
                 .post()
                 .then()
+                .log().all()
                 .statusCode(200)
                 .extract()
                 .body()

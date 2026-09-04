@@ -852,6 +852,7 @@ class BookControllerCorsOriginLocalTest extends AbstractIntegrationTest {
                 .when()
                 .get("/exportPage")
                 .then()
+                .log().all()
                 .statusCode(200)
                 .extract()
                 .body()

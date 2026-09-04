@@ -958,6 +958,7 @@ class PersonControllerCorsOriginLocalTest extends AbstractIntegrationTest {
                 .when()
                 .get("/export/1")
                 .then()
+                .log().all()
                 .statusCode(200)
                 .extract()
                 .response();
