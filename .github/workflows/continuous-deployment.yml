@@ -28,6 +28,19 @@ jobs:
       working-directory: ./28_DockerizingOurApp
       run: mvn clean package  -DforkCount=0 -e
 
+    - name: Show test reports
+      if: always()
+      working-directory: ./28_DockerizingOurApp
+      run: |
+        echo "===== SUREFIRE REPORTS ====="
+        find target/surefire-reports -type f -print || true
+
+        echo "===== TXT REPORTS ====="
+        cat target/surefire-reports/*.txt || true
+
+        echo "===== FAILURES AND ERRORS ====="
+        grep -R -i -E "failure|error|403|401|cors|invalid cors" target/surefire-reports || true
+
     - name: Docker Compose Build
       working-directory: ./28_DockerizingOurApp
       run: docker compose build
