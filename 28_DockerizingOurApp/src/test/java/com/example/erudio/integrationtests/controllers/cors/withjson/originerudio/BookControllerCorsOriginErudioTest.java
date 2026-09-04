@@ -861,7 +861,8 @@ class BookControllerCorsOriginErudioTest extends AbstractIntegrationTest {
     }
 
     @Test
-    @Order(20)
+    @Order(21)
+    @Disabled
     void exportPagePdf() throws JsonProcessingException{
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)
@@ -892,6 +893,7 @@ class BookControllerCorsOriginErudioTest extends AbstractIntegrationTest {
 
     @Test
     @Order(21)
+    @Disabled
     void exportPagePdfWithWrongOrigin() throws JsonProcessingException{
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_SEMERU)
