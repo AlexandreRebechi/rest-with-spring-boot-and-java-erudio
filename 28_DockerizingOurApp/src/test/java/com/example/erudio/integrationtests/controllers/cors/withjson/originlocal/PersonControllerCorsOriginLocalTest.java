@@ -915,10 +915,6 @@ class PersonControllerCorsOriginLocalTest extends AbstractIntegrationTest {
     @Test
     @Order(23)
     void exportPdf() {
-        System.out.println("=================================");
-        System.out.println("ACCESS TOKEN:");
-        System.out.println("[" + tokenDTO.getAccessToken() + "]");
-        System.out.println("=================================");
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_LOCAL)
                 .addHeader(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + tokenDTO.getAccessToken())
