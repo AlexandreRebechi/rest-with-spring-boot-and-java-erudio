@@ -96,7 +96,7 @@ public interface PersonControllerDocs {
     );
 
     @Operation(summary = "Export People",
-            description = "Export a Page of People in XLSX and CSV format",
+            description = "Export a Page of People in XLSX/CSV/PDF format",
             tags = {"People"},
             responses = {
                     @ApiResponse(
@@ -104,7 +104,8 @@ public interface PersonControllerDocs {
                             responseCode = "200",
                             content = {
                                     @Content(mediaType = MediaTypes.APPLICATION_XLSX_VALUE),
-                                    @Content(mediaType = MediaTypes.APPLICATION_CSV_VALUE)
+                                    @Content(mediaType = MediaTypes.APPLICATION_CSV_VALUE),
+                                    @Content(mediaType = MediaTypes.APPLICATION_PDF_VALUE)
                             }),
                     @ApiResponse(description = "No Content", responseCode = "204", content = @Content),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
