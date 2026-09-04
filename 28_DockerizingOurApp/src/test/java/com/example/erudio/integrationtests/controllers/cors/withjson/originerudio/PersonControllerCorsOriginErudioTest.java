@@ -937,7 +937,6 @@ class PersonControllerCorsOriginErudioTest extends AbstractIntegrationTest {
     @Test
     @Order(23)
     void exportPdf() {
-
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)
                 .addHeader(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + tokenDTO.getAccessToken())
