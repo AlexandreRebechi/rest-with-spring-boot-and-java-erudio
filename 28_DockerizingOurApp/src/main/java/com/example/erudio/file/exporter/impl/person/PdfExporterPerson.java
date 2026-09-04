@@ -46,19 +46,17 @@ public class PdfExporterPerson implements FileExporterPerson {
 
     @Override
     public Resource exportPerson(PersonDTO person) throws Exception {
-        // Carrega o relatório principal .jasper
         InputStream mainJasperStream = getClass().getResourceAsStream("/templates/person.jasper");
         if (mainJasperStream == null) {
             throw new RuntimeException("Compiled report file not found: /templates/person.jasper");
         }
 
-        // Carrega o subrelatório .jasper
         InputStream subReportStream = getClass().getResourceAsStream("/templates/bookSub.jasper");
         if (subReportStream == null) {
             throw new RuntimeException("Compiled report file not found: /templates/bookSub.jasper");
         }
 
-        // O subrelatório compilado pode ser lido diretamente como JasperReport
+        // Carrega o subrelatório em memória
         JasperReport subReport = (JasperReport) JRLoader.loadObject(subReportStream);
 
         InputStream qrCodeStream = service.generateQRCode(person.getProfileUrl(), 200, 200);
@@ -68,6 +66,7 @@ public class PdfExporterPerson implements FileExporterPerson {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("SUB_REPORT_DATA_SOURCE", subReportDataSource);
         parameters.put("BOOK_SUB_REPORT", subReport);
+        // REMOVIDO: parameters.put("SUB_REPORT_DIR", path); -> Não é necessário ao passar o objeto "subReport" diretamente
         parameters.put("QR_CODEIMAGE", qrCodeStream);
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(mainJasperStream, parameters, mainDataSource);
