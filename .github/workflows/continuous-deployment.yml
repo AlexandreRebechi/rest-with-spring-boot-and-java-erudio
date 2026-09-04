@@ -28,7 +28,7 @@ jobs:
       working-directory: ./28_DockerizingOurApp
       run: mvn clean package  -DforkCount=0 -e
 
-    - name: Show test reports
+    - name: Show test reports new
       if: always()
       working-directory: ./28_DockerizingOurApp
       run: |
