@@ -8,5 +8,5 @@ public interface TestConfigs {
 
     String ORIGIN_ERUDIO = "https://www.erudio.com.br";
     String ORIGIN_SEMERU = "https://www.semeru.com.br";
-    String ORIGIN_LOCAL = "http://localhost:8080";
+    String ORIGIN_LOCAL = "http://localhost:8888";
 }
