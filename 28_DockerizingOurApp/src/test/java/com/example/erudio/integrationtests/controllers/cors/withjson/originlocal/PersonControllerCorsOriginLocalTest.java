@@ -858,7 +858,7 @@ class PersonControllerCorsOriginLocalTest extends AbstractIntegrationTest {
     }
 
     @Test
-    @Order(20)
+    @Order(21)
     void exportPagePdf() throws JsonProcessingException{
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_LOCAL)
@@ -885,33 +885,6 @@ class PersonControllerCorsOriginLocalTest extends AbstractIntegrationTest {
         assertNotNull(content.contains("address"));
         assertNotNull(content.contains("gender"));
 
-    }
-
-    @Test
-    @Order(21)
-    void exportPagePdfWithWrongOrigin() throws JsonProcessingException{
-        specification = new RequestSpecBuilder()
-                .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_SEMERU)
-                .addHeader(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + tokenDTO.getAccessToken())
-                .addHeader("Accept", MediaTypes.APPLICATION_PDF_VALUE)
-                .setBasePath("/api/person/v1")
-                .setPort(TestConfigs.SERVER_PORT)
-                .addFilter(new RequestLoggingFilter(LogDetail.ALL))
-                .addFilter(new ResponseLoggingFilter(LogDetail.ALL))
-                .build();
-        var content = given(specification)
-
-                .contentType(MediaType.APPLICATION_JSON_VALUE)
-                .queryParams("page", 3, "size", 12, "direction", "asc")
-                .when()
-                .get("/exportPage")
-                .then()
-                .statusCode(403)
-                .extract()
-                .body()
-                .asString();
-
-        assertEquals("Invalid CORS request", content);
     }
 
     @Test
@@ -942,7 +915,10 @@ class PersonControllerCorsOriginLocalTest extends AbstractIntegrationTest {
     @Test
     @Order(23)
     void exportPdf() {
-
+        System.out.println("=================================");
+        System.out.println("ACCESS TOKEN:");
+        System.out.println("[" + tokenDTO.getAccessToken() + "]");
+        System.out.println("=================================");
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_LOCAL)
                 .addHeader(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + tokenDTO.getAccessToken())
@@ -971,6 +947,33 @@ class PersonControllerCorsOriginLocalTest extends AbstractIntegrationTest {
         assertTrue(response.getBody().asByteArray().length > 0);
 
         assertTrue(response.getHeader("Content-Disposition").contains("person.pdf"));
+    }
+
+    @Test
+    @Order(24)
+    void exportPagePdfWithWrongOrigin() throws JsonProcessingException{
+        specification = new RequestSpecBuilder()
+                .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_SEMERU)
+                .addHeader(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + tokenDTO.getAccessToken())
+                .addHeader("Accept", MediaTypes.APPLICATION_PDF_VALUE)
+                .setBasePath("/api/person/v1")
+                .setPort(TestConfigs.SERVER_PORT)
+                .addFilter(new RequestLoggingFilter(LogDetail.ALL))
+                .addFilter(new ResponseLoggingFilter(LogDetail.ALL))
+                .build();
+        var content = given(specification)
+
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .queryParams("page", 3, "size", 12, "direction", "asc")
+                .when()
+                .get("/exportPage")
+                .then()
+                .statusCode(403)
+                .extract()
+                .body()
+                .asString();
+
+        assertEquals("Invalid CORS request", content);
     }
 
 

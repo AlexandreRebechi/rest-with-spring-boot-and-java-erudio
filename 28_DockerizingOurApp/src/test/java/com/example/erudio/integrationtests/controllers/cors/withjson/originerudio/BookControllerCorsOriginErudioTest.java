@@ -877,6 +877,7 @@ class BookControllerCorsOriginErudioTest extends AbstractIntegrationTest {
                 .when()
                 .get("/exportPage")
                 .then()
+                .log().all()
                 .statusCode(200)
                 .extract()
                 .body()
@@ -891,7 +892,7 @@ class BookControllerCorsOriginErudioTest extends AbstractIntegrationTest {
     }
 
     @Test
-    @Order(21)
+    @Order(22)
     void exportPagePdfWithWrongOrigin() throws JsonProcessingException{
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_SEMERU)

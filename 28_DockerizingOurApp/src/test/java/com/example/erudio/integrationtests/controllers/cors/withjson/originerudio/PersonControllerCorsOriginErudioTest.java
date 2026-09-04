@@ -877,7 +877,7 @@ class PersonControllerCorsOriginErudioTest extends AbstractIntegrationTest {
     }
 
     @Test
-    @Order(20)
+    @Order(21)
     void exportPagePdf() throws JsonProcessingException{
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)
@@ -893,6 +893,7 @@ class PersonControllerCorsOriginErudioTest extends AbstractIntegrationTest {
                 .when()
                 .get("/exportPage")
                 .then()
+                .log().all()
                 .statusCode(200)
                 .extract()
                 .body()
@@ -907,7 +908,7 @@ class PersonControllerCorsOriginErudioTest extends AbstractIntegrationTest {
     }
 
     @Test
-    @Order(21)
+    @Order(22)
     void exportPagePdfWithWrongOrigin() throws JsonProcessingException{
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_SEMERU)
@@ -934,7 +935,41 @@ class PersonControllerCorsOriginErudioTest extends AbstractIntegrationTest {
     }
 
     @Test
-    @Order(22)
+    @Order(23)
+    void exportPdf() {
+
+        specification = new RequestSpecBuilder()
+                .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)
+                .addHeader(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + tokenDTO.getAccessToken())
+                .addHeader("Accept", MediaTypes.APPLICATION_PDF_VALUE)
+                .setBasePath("/api/person/v1")
+                .setPort(TestConfigs.SERVER_PORT)
+                .addFilter(new RequestLoggingFilter(LogDetail.ALL))
+                .addFilter(new ResponseLoggingFilter(LogDetail.ALL))
+                .build();
+
+        var response = given(specification)
+                .queryParam("id", 1)
+                .when()
+                .get("/export/1")
+                .then()
+                .log().all()
+                .statusCode(200)
+                .extract()
+                .response();
+
+        assertNotNull(response);
+        assertEquals(MediaTypes.APPLICATION_PDF_VALUE, response.getContentType().split(";")[0]
+        );
+
+        assertNotNull(response.getBody());
+        assertTrue(response.getBody().asByteArray().length > 0);
+
+        assertTrue(response.getHeader("Content-Disposition").contains("person.pdf"));
+    }
+
+    @Test
+    @Order(24)
     void exportPdfWithWrongOrigin() {
 
         specification = new RequestSpecBuilder()
@@ -957,40 +992,6 @@ class PersonControllerCorsOriginErudioTest extends AbstractIntegrationTest {
                 .response();
 
     }
-
-    @Test
-    @Order(23)
-    void exportPdf() {
-
-        specification = new RequestSpecBuilder()
-                .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)
-                .addHeader(TestConfigs.HEADER_PARAM_AUTHORIZATION, "Bearer " + tokenDTO.getAccessToken())
-                .addHeader("Accept", MediaTypes.APPLICATION_PDF_VALUE)
-                .setBasePath("/api/person/v1")
-                .setPort(TestConfigs.SERVER_PORT)
-                .addFilter(new RequestLoggingFilter(LogDetail.ALL))
-                .addFilter(new ResponseLoggingFilter(LogDetail.ALL))
-                .build();
-
-        var response = given(specification)
-                .queryParam("id", 1)
-                .when()
-                .get("/export/1")
-                .then()
-                .statusCode(200)
-                .extract()
-                .response();
-
-        assertNotNull(response);
-        assertEquals(MediaTypes.APPLICATION_PDF_VALUE, response.getContentType().split(";")[0]
-        );
-
-        assertNotNull(response.getBody());
-        assertTrue(response.getBody().asByteArray().length > 0);
-
-        assertTrue(response.getHeader("Content-Disposition").contains("person.pdf"));
-    }
-
 
 
     private void mockPerson() {
