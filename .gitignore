@@ -16,6 +16,9 @@
 *.war
 *.ear
 
+# Permitir arquivos compilados do JasperReports
+!src/main/resources/templates/*.jasper
+
 # Merge Files
 *.bak
 
