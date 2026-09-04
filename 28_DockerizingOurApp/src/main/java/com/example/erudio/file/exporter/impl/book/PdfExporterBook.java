@@ -19,18 +19,17 @@ public class PdfExporterBook implements FileExporterBook {
 
     @Override
     public Resource exportBooks(List<BookDTO> books) throws Exception {
-        InputStream inputStream = getClass().getResourceAsStream("/templates/books.jrxml");
-        if(inputStream == null) {
-            throw new RuntimeException("Template file not found /templates/books.jrxml");
+        // Carrega diretamente o .jasper pré-compilado pelo Jaspersoft Studio
+        InputStream jasperStream = getClass().getResourceAsStream("/templates/books.jasper");
+        if (jasperStream == null) {
+            throw new RuntimeException("Compiled report file not found: /templates/books.jasper");
         }
 
-        JasperReport jasperReport = JasperCompileManager.compileReport(inputStream);
-
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(books);
-        Map<String, Object> parameters = new HashMap<String, Object>();
-        //parameters.put("title", "Books Report");
+        Map<String, Object> parameters = new HashMap<>();
 
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport,parameters, dataSource);
+        // Preenche o relatório sem passar por compilação em tempo de execução
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperStream, parameters, dataSource);
 
         try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
             JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
@@ -38,4 +37,3 @@ public class PdfExporterBook implements FileExporterBook {
         }
     }
 }
-
