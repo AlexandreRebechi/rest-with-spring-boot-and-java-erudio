@@ -5,7 +5,7 @@
 server:
   port: 80
 cors:
-  originPatterns: http://localhost:8080,http://localhost:3000,http://localhost:8888,https://www.erudio.com.br
+  originPatterns: http://localhost:8080,http://localhost:3000,http://localhost:8888,http://localhost:80,https://www.erudio.com.br
 file:
   # Secure fallback to create a local directory if the UPLOAD_DIR variable is empty
   upload-dir: ${UPLOAD_DIR:./uploads}
