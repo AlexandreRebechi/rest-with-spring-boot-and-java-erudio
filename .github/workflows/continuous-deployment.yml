@@ -33,7 +33,7 @@ jobs:
 
     - name: Build Application .jar
       working-directory: ./28_DockerizingOurApp
-      run: mvn clean package  -DforkCount=0 -e
+      run: mvn clean package 
 
     - name: Docker Compose Build
       working-directory: ./28_DockerizingOurApp
