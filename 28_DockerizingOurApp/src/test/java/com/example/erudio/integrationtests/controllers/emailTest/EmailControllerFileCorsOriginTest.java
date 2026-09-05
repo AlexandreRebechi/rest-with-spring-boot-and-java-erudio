@@ -153,6 +153,7 @@ class EmailControllerFileCorsOriginTest extends AbstractIntegrationTest {
     }
     @Test
     @Order(3)
+    @Disabled("Teste depende de servidor SMTP externo")
     void sendEmailWithAttachmentWithWrongOriginTest() {
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_SEMERU)
