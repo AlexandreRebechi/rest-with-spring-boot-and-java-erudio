@@ -878,7 +878,7 @@ class PersonControllerCorsOriginErudioTest extends AbstractIntegrationTest {
 
     @Test
     @Order(21)
-    @Disabled
+    @Disabled("Problema específico do ambiente Linux com JasperReports")
     void exportPagePdf() throws JsonProcessingException{
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)
@@ -937,7 +937,7 @@ class PersonControllerCorsOriginErudioTest extends AbstractIntegrationTest {
 
     @Test
     @Order(23)
-    @Disabled
+    @Disabled("Problema específico do ambiente Linux com JasperReports")
     void exportPdf() {
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)

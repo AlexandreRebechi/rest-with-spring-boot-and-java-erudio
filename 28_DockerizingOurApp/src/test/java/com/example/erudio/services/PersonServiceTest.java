@@ -828,7 +828,7 @@ class PersonServiceTest {
         assertTrue(person.getLinks().stream()
                 .anyMatch(link -> link.getRel().value().equals("findAll")
                                 && link.getHref().startsWith(
-                                "http://localhost:8888/api/person/v1"
+                                "/api/person/v1"
                         )
                                 && "GET".equals(link.getType())
                 ));
