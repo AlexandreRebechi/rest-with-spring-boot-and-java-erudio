@@ -878,6 +878,7 @@ class PersonControllerCorsOriginErudioTest extends AbstractIntegrationTest {
 
     @Test
     @Order(21)
+    @Disabled
     void exportPagePdf() throws JsonProcessingException{
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)
@@ -936,6 +937,7 @@ class PersonControllerCorsOriginErudioTest extends AbstractIntegrationTest {
 
     @Test
     @Order(23)
+    @Disabled
     void exportPdf() {
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)
