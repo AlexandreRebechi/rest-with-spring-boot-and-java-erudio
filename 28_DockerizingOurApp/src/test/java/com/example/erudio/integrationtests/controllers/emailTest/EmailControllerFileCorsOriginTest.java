@@ -60,6 +60,7 @@ class EmailControllerFileCorsOriginTest extends AbstractIntegrationTest {
 
     @Test
     @Order(1)
+    @Disabled("Teste depende de servidor SMTP externo")
     void sendEmailWithAttachmentOriginErudioTest() {
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_ERUDIO)
@@ -106,6 +107,7 @@ class EmailControllerFileCorsOriginTest extends AbstractIntegrationTest {
 
     @Test
     @Order(2)
+    @Disabled("Teste depende de servidor SMTP externo")
     void sendEmailWithAttachmentOriginLocalTest() {
         specification = new RequestSpecBuilder()
                 .addHeader(TestConfigs.HEADER_PARAM_ORIGIN, TestConfigs.ORIGIN_LOCAL)
