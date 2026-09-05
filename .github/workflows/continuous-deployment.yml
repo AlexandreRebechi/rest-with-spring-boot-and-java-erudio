@@ -35,17 +35,6 @@ jobs:
       working-directory: ./28_DockerizingOurApp
       run: mvn clean package  -DforkCount=0 -e
 
-    - name: Run tests
-      run: mvn test -e
-
-    - name: Show Surefire reports new
-      if: always()
-      run: |
-        echo "===== SUREFIRE REPORTS ====="
-        find target/surefire-reports -type f -name "*.txt" -print
-        echo "===== FAILED TEST DETAILS ====="
-        grep -R -A 20 -B 5 "Failures\|Errors\|Exception\|ERROR" target/surefire-reports/*.txt || true
-
     - name: Docker Compose Build
       working-directory: ./28_DockerizingOurApp
       run: docker compose build
