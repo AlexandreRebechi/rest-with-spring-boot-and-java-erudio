@@ -38,7 +38,7 @@ jobs:
     - name: Run tests
       run: mvn test -e
 
-    - name: Show Surefire reports
+    - name: Show Surefire reports new
       if: always()
       run: |
         echo "===== SUREFIRE REPORTS ====="
