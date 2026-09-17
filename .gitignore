@@ -1,10 +1,8 @@
 *.class
 
-
 /node_modules
 
 # SSH Keys
-
 *.pem
 *.ppk
 
@@ -22,11 +20,11 @@
 # Merge Files
 *.bak
 
-#Gradle temporary files
+# Gradle temporary files
 ttarget/
 **/target/
 
-#Eclipse files
+# Eclipse files
 **/.project
 **/.classpath
 **/.settings/
@@ -35,14 +33,18 @@ blog/bin/
 **/.tern-project
 **/.factorypath
 
-#IntelliJ files
+# IntelliJ files
 **/*.iml
 **/.idea
 **/.gradle
 
-#Other Files
+# Other Files
 *.ini
 .env
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+
+# WordPress local files
+27_IntroToContainerOrchestrationWithDockerCompose/wordpress/wp-app/
+
+# virtual machine crash logs
 hs_err_pid*
 /.metadata/
