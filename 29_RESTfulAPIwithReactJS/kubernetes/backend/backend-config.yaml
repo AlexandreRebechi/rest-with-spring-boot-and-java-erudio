@@ -1,0 +1,6 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+data:
+  URL_DB: jdbc:mysql://mysql:3306/rest_with_spring_boot_erudio

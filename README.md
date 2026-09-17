@@ -1,1 +1,3 @@
-# rest-with-spring-boot-and-java-erudio
+# Rest with Spring Boot 4.0.1 and Java 25
+[![Continuous Integration and Delivery with Github Actions](https://github.com/AlexandreRebechi/rest-with-spring-boot-and-java-erudio/actions/workflows/continuous-deployment.yml/badge.svg)](https://github.com/AlexandreRebechi/rest-with-spring-boot-and-java-erudio/actions/workflows/continuous-deployment.yml)
+[![Docker Pulls](https://img.shields.io/docker/pulls/alexandrerebechi/rest-with-spring-boot-erudio)](https://hub.docker.com/r/alexandrerebechi/rest-with-spring-boot-erudio)

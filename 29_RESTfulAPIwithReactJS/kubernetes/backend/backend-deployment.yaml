@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: backend
+
+  template:
+    metadata:
+      labels:
+        app: backend
+
+    spec:
+      containers:
+        - name: backend
+          image: alexandrerebechi/rest-with-spring-boot-erudio
+
+          ports:
+            - containerPort: 80
+
+          env:
+            - name: URL_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: backend-config
+                  key: URL_DB
+
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_USER
+
+            - name: DATABASE_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: MYSQL_PASSWORD
