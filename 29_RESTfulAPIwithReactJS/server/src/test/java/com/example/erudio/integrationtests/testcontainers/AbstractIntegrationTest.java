@@ -24,8 +24,7 @@ public class AbstractIntegrationTest {
                 .withDatabaseName("test")
                 .withUsername("test")
                 .withPassword("test")
-                .withStartupTimeout(Duration.ofMinutes(5))
-                .withReuse(true);
+                .withStartupTimeout(Duration.ofMinutes(5));
         private static void startContainers() {
             if (!mysql.isRunning()) {
                 Startables.deepStart(Stream.of(mysql)).join();
