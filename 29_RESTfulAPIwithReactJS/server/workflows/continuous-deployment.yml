@@ -1,13 +1,12 @@
-name: Continuous Integration and Delivery with Github Actions and Kubernetes!
+name: Continuous Integration and Delivery with Github Actions
 
 on:
   push:
     branches:
       - "main"
-
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -25,6 +24,13 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
+      - name: Install fonts for JasperReports
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fontconfig ttf-mscorefonts-installer
+          sudo fc-cache -f -v       
+
+
       - name: Build Application .jar
         working-directory: ./29_RESTfulAPIwithReactJS/server
         run: mvn clean package -DforkCount=0 -e
@@ -33,9 +39,9 @@ jobs:
         working-directory: ./29_RESTfulAPIwithReactJS/server
         run: docker compose build
 
-      - name: Push to Docker Hub Container Registry
+      - name: Push to Docker Hub Container Resgistry
         run: |
-          docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:${{ github.run_id }}
+          docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:${{ github.run_id }} 
           docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:${{ github.run_id }}
 
