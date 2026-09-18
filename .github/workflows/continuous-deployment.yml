@@ -44,10 +44,3 @@ jobs:
           docker tag ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:${{ github.run_id }} 
           docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/rest-with-spring-boot-erudio:${{ github.run_id }}
-
-      - name: Deploy Backend to Kubernetes
-        shell: powershell
-        run: |
-          kubectl apply -f ./29_RESTfulAPIwithReactJS/kubernetes/backend/
-          kubectl rollout restart deployment backend
-          kubectl rollout status deployment backend
