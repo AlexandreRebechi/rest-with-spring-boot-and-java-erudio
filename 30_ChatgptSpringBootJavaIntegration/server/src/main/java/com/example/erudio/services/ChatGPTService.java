@@ -14,16 +14,16 @@ public class ChatGPTService {
 
     private Logger logger = Logger.getLogger(ChatGPTService.class.getName());
 
-    @Value("${openia.model}")
+    @Value("${openai.model}")
     private String model;
 
-    @Value("${openia.api.url}")
+    @Value("${openai.api.url}")
     private String url;
 
     @Autowired
     private RestTemplate template;
 
-    public Object chat(String prompt){
+    public String chat(String prompt) {
         logger.info("Starting Prompt");
 
         ChatGptRequest request = new ChatGptRequest(model, prompt);
@@ -31,6 +31,6 @@ public class ChatGPTService {
         logger.info("Processing Prompt");
         ChatGptResponse response = template.postForObject(url, request, ChatGptResponse.class);
 
-        return response;
+        return response.getChoices().get(0).getMessage().getContent();
     }
 }

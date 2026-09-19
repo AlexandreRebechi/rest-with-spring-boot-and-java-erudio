@@ -75,6 +75,7 @@ public class SecurityConfig {
                                 ).permitAll()
                                 .requestMatchers("/api/**").authenticated()
                                 .requestMatchers("/users").denyAll()
+                                .requestMatchers("/bot/chat").permitAll()
 
 
                 )

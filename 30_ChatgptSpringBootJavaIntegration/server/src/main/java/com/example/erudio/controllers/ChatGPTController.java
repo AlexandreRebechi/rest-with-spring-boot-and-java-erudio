@@ -16,7 +16,7 @@ public class ChatGPTController {
 
     // HOST /bot/chat
     @GetMapping("/chat")
-    public Object chat(@RequestParam("prompt") String prompt) {
+    public String chat(@RequestParam("prompt") String prompt) {
         return service.chat(prompt);
     }
 }
